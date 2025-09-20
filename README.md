@@ -1,22 +1,32 @@
-# 🧩 Geometric Drawing Program
+# 🧩 GeoDraw Application: A Modular JavaFX Framework for Geometric Shape Manipulation
 
-## 🎯 Obiettivo del progetto
+## 🎯 Project Overview
+**GeoDraw** is a modular application built with **JavaFX**, designed for **geometric shape creation, manipulation, and management** through an interactive user interface.  
+The project emphasizes **extensibility, maintainability, and usability**, adopting a layered architecture and widely recognized software design patterns.  
+Development follows **Agile/Scrum methodologies**, ensuring iterative delivery and traceability of artifacts.
 
-Lo scopo del progetto è **sviluppare un'applicazione che implementi un programma di disegno geometrico**.  
-L'applicazione permette agli utenti di creare, modificare e gestire elementi grafici geometrici attraverso un'interfaccia interattiva.
+---
 
-## 📚 Documentazione
+## 🖼️ Application Preview
+Below is a preview of the initial application screen:
 
-La documentazione completa è disponibile nella cartella [`docs/`](./docs/). Di seguito i link diretti ai principali documenti:
+![GeoDraw Initial Screen](./docs/images/initial_screen.png)
 
-- 🛠️ [Tool Setup](./docs/tool_setup.md): linee guida per configurare l'ambiente di sviluppo, comprendenti:
-  - Accesso e struttura della repository GitHub
-  - Collegamento e uso della board Trello per la gestione Scrum
-  - Collegamento al file Excel condiviso contenente Product Backlog e Sprint Backlog
-  - Tecnologie e strumenti adottati (JavaFX, IntelliJ IDEA, Maven, JDK 21, SceneBuilder, JUnit).
-- 🏗️ [Architettura del Sistema](./docs/design_document.md): descrizione dell’architettura software adottata con:
-  - Scelta dell’**architettura del sistema** e motivazione di quest'ultima
-  - **Componenti principali** del sistema
-  - **Diagramma UML delle classi** proposto per una visione strutturale di alto livello dell’applicazione
-  - Evidenziazione dei **Design Pattern utilizzati** all’interno del class diagram
-- 📋 [Scrum & Documentazione Agile](./docs/scrum): sezione dedicata alla documentazione Scrum
+---
+
+## 📚 Documentation
+Comprehensive documentation is available in the [`docs/`](./docs/) directory. Key resources include:
+
+- 🛠️ [**Tool Setup**](./docs/tool_setup.md): Development environment configuration, including:
+  - GitHub repository access and structure
+  - Trello board integration for Scrum project management
+  - Shared Excel document for Product Backlog and Sprint Backlog
+  - Technologies and tools adopted: **JavaFX**, **IntelliJ IDEA**, **Maven**, **JDK 21**, **SceneBuilder**, **JUnit**
+
+- 🏗️ [**System Architecture**](./docs/design_document.md): Detailed description of the software architecture, including:
+  - Justification of the selected **system architecture**
+  - Overview of **main system components**
+  - **UML class diagram** providing a high-level structural view
+  - Identification of **design patterns** applied within the system
+
+- 📋 [**Scrum & Agile Documentation**](./docs/scrum): Agile process artifacts, including sprint planning, backlog tracking, and progress reports
