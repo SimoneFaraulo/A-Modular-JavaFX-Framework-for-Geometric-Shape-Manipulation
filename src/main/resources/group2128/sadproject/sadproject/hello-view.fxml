@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="642.0" prefWidth="1051.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group2128.sadproject.sadproject.AppController">
+
+    <!-- Center Drawing Area -->
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" prefHeight="470.0" prefWidth="960.0" stylesheets="@grid.css">
+            <contextMenu>
+                <ContextMenu fx:id="contextMenu">
+                    <items>
+                        <MenuItem fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDeleteButtonAction" text="Delete" />
+                        <MenuItem fx:id="resizeBtn" mnemonicParsing="false" onAction="#onResizeButtonAction" text="Resize" />
+                        <MenuItem fx:id="stretchBtn" mnemonicParsing="false" onAction="#onStretchButtonAction" text="Stretch" />
+                        <MenuItem fx:id="copyBtn" mnemonicParsing="false" onAction="#onCopyButtonAction" text="Copy" />
+                        <MenuItem fx:id="cutBtn" mnemonicParsing="false" onAction="#onCutButtonAction" text="Cut" />
+                        <MenuItem fx:id="pasteBtn" mnemonicParsing="false" onAction="#onPasteButtonAction" text="Paste" />
+                        <MenuItem fx:id="foregroundBtn" mnemonicParsing="false" onAction="#onForegroundButtonAction" text="Bring to the foreground" />
+                        <MenuItem fx:id="backgroundBtn" mnemonicParsing="false" onAction="#onBackgroundButtonAction" text="Send to the background" />
+                        <MenuItem fx:id="flipHorizontalBtn" mnemonicParsing="false" onAction="#onFlipHorizontalButtonAction" text="Flip horizontal" />
+                        <MenuItem fx:id="flipVerticalBtn" mnemonicParsing="false" onAction="#onFlipVerticalButtonAction" text="Flip vertical" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+            <padding>
+                <Insets bottom="10.0" />
+            </padding>
+            <content>
+                <StackPane prefHeight="488.0" prefWidth="960.0">
+                    <children>
+                        <AnchorPane fx:id="gridPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="499.0" prefWidth="960.0" stylesheets="@grid.css" />
+                  <Group>
+                     <children>
+                                <AnchorPane fx:id="drawingPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#onDrawingPaneClicked" prefHeight="499.0" prefWidth="1047.0" stylesheets="@grid.css" />
+                     </children>
+                  </Group>
+                    </children>
+                </StackPane>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Bottom Status Bar -->
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="960.0" spacing="100.0" style="-fx-background-color: #f5f5f5;">
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Label text="Status:" />
+                    <Label text="Ready" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="17.0" prefWidth="340.0" spacing="10.0">
+                <children>
+                    <Label text="Zoom" />
+                    <Slider fx:id="zoomSlider" blockIncrement="5.0" max="10.0" min="1.0" value="1.0" />
+                    <Label fx:id="zoomLbl" alignment="CENTER" prefHeight="17.0" prefWidth="51.0" text="0%" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="18.0" prefWidth="280.0" spacing="20.0">
+                <children>
+                    <CheckBox fx:id="gridCB" mnemonicParsing="false" text="Grid" />
+                    <Slider fx:id="gridBlockSizeSlider" blockIncrement="1.0" max="4.0" />
+                </children>
+                <HBox.margin>
+                    <Insets bottom="2.0" />
+                </HBox.margin>
+            </HBox>
+        </HBox>
+    </bottom>
+    <top>
+        <VBox prefHeight="108.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar style="-fx-background-color: #e6e6e6;">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#createNewPane" text="New" />
+                                <MenuItem mnemonicParsing="false" onAction="#savePaint" text="Save" />
+                                <MenuItem mnemonicParsing="false" onAction="#loadPaint" text="Load" />
+                                <MenuItem fx:id="undoBtn" mnemonicParsing="false" onAction="#onUndoButton" text="Undo" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <ToolBar prefHeight="102.0" prefWidth="960.0" style="-fx-background-color: white;">
+                    <Separator orientation="VERTICAL" prefHeight="23.0" prefWidth="6.0" />
+                    <VBox prefHeight="20.0" prefWidth="174.0">
+                        <children>
+                            <HBox prefHeight="50.0" prefWidth="156.0">
+                                <children>
+                                    <Button fx:id="segmentBtn" mnemonicParsing="false" onAction="#onSegmentButtonAction" prefHeight="36.0" prefWidth="29.0" style="-fx-background-color: #f5f5f5;">
+                                        <graphic>
+                                            <ImageView fitHeight="21.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@img/lineIcon.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                    <Button fx:id="rectangleBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onRectangleButtonAction" prefHeight="36.0" prefWidth="46.0" style="-fx-background-color: #f5f5f5;">
+                                        <graphic>
+                                            <ImageView fitHeight="22.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@img/rectangleIcon.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                    <Button fx:id="ellipseBtn" layoutX="65.0" layoutY="10.0" mnemonicParsing="false" onAction="#onEllipseButtonAction" prefHeight="35.0" prefWidth="46.0" style="-fx-background-color: #f5f5f5;">
+                                        <graphic>
+                                            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@img/ellipseIcon.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                    <Button fx:id="polygonBtn" layoutX="99.0" layoutY="10.0" mnemonicParsing="false" onAction="#onPolygonButtonAction" prefHeight="35.0" prefWidth="46.0" style="-fx-background-color: #f5f5f5;">
+                                        <graphic>
+                                            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@img/polygon.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                    <Button fx:id="textBtn" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#onTextButtonAction" prefHeight="35.0" prefWidth="46.0" style="-fx-background-color: #f5f5f5;">
+                                        <graphic>
+                                            <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                                <image>
+                                                    <Image url="@img/text.png" />
+                                                </image>
+                                            </ImageView>
+                                        </graphic>
+                                    </Button>
+                                </children></HBox>
+                            <ScrollBar prefHeight="14.0" prefWidth="178.0" />
+                        </children>
+                    </VBox>
+                    <Separator orientation="VERTICAL" />
+                    <VBox alignment="CENTER" prefHeight="75.0" prefWidth="155.0">
+                        <children>
+                            <Label text="Fill Color (RGB)">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Label>
+                            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="192.0" spacing="20.0">
+                                <children>
+                                    <ColorPicker fx:id="fillColorSelector" onAction="#onFillColorPicker" style="-fx-background-color: #f2f2f2;" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                    <Separator orientation="VERTICAL" />
+                    <VBox alignment="CENTER" prefHeight="75.0" prefWidth="155.0">
+                        <children>
+                            <Label text="Stroke Color (RGB)">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Label>
+                            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="192.0" spacing="20.0">
+                                <children>
+                                    <ColorPicker fx:id="strokeColorSelector" onAction="#onStrokeColorPicker" style="-fx-background-color: #f2f2f2;" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                    <Separator orientation="VERTICAL" />
+                    <VBox prefHeight="75.0" prefWidth="161.0">
+                        <children>
+                            <Label contentDisplay="CENTER" prefHeight="19.0" prefWidth="161.0" text="                  Size">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Label>
+                            <HBox prefHeight="38.0" prefWidth="162.0">
+                                <children>
+                                    <Label prefHeight="18.0" prefWidth="87.0" text="    Width" />
+                                    <Label prefHeight="18.0" prefWidth="77.0" text="      Height" />
+                                </children>
+                            </HBox>
+                            <HBox alignment="TOP_CENTER" prefHeight="56.0" prefWidth="142.0">
+                                <children>
+                                    <TextField fx:id="widthTxt" text="50" />
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
+                                    <TextField fx:id="heightTxt" prefHeight="26.0" prefWidth="149.0" text="50" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                    <Separator layoutX="542.0" layoutY="10.0" orientation="VERTICAL" />
+                    <VBox prefHeight="75.0" prefWidth="145.0" spacing="2.0">
+                        <children>
+                            <Label prefHeight="3.0" prefWidth="146.0" text="                Text">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Label>
+                            <TextField fx:id="textShapeTxt" promptText="Write something" />
+                            <Spinner fx:id="fontSizeMenu" editable="true" />
+                        </children>
+                    </VBox>
+                    <Separator orientation="VERTICAL" />
+                    <VBox alignment="CENTER" prefHeight="71.0" prefWidth="114.0">
+                        <children>
+                            <Label text="Rotation angle">
+                                <font>
+                                    <Font name="System Bold" size="13.0" />
+                                </font>
+                            </Label>
+                            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="192.0" spacing="20.0">
+                                <children>
+                                    <TextField fx:id="angleTxt" onAction="#onAngleAction" prefHeight="25.0" prefWidth="75.0" promptText="0" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                    <Separator orientation="VERTICAL" />
+                </ToolBar>
+                <Separator prefHeight="0.0" prefWidth="960.0" />
+            </children>
+        </VBox>
+    </top>
+
+</BorderPane>
