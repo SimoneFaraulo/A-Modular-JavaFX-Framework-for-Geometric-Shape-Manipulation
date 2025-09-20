@@ -10,7 +10,7 @@ Development follows **Agile/Scrum methodologies**, ensuring iterative delivery a
 ## 🖼️ Application Preview
 Below is a preview of the initial application screen:
 
-![GeoDraw Initial Screen](./docs/images/initial_screen.png)
+![GeoDraw Initial Screen](./docs/img/initial_screen.jpg)
 
 ---
 
